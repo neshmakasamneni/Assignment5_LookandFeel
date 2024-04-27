@@ -1,0 +1,294 @@
+﻿
+@{
+    Layout = null; // Assuming no layout is used
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verandah Cafe</title>
+<link href="@Url.Content("~/css/home.css")" rel="stylesheet" />
+<link href="@Url.Content("~/css/charts.css")" rel="stylesheet" />
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <div class="buttom-header-container">
+        <div class="buttom-header">
+            <div class="logo">
+                <h1>Verandah Cafe</h1>
+            </div>
+            <div class="navlist">
+                <a href="@Url.Action("Index", "Home")">HOME</a>
+                <a href="@Url.Action("Menu", "Home")">MENU</a>
+                <a href="@Url.Action("Events", "Home")">EVENTS</a>
+                <a href="@Url.Action("Ratings", "Home")">RATINGS</a>
+                <a href="@Url.Action("Feedback", "Home")">FEEDBACK</a>
+                <a href="@Url.Action("Charts", "Home")">CHARTS</a>
+                <a href="@Url.Action("About", "Home")">ABOUT</a>
+            </div>
+        </div>
+    </div>
+    <div class="chart-controls">
+        <label for="chartSelector">Select Chart:</label>
+        <select id="chartSelector">
+            <option value="all">All Charts</option>
+            <option value="coffeeSalesChart">Coffee Sales</option>
+            <option value="eventAttendanceChart">Event Attendance</option>
+            <option value="menuItemsRatingsChart">Ratings Chart for Menu Items</option>
+        </select>
+    </div>
+
+    <div id="coffeeSalesChartContainer" class="chart-container pie-chart-container" style="display:none;">
+        <canvas id="coffeeSalesChart"></canvas>
+    </div>
+
+    <div id="eventAttendanceChartContainer" class="chart-container" style="display:none;">
+        <canvas id="eventAttendanceChart"></canvas>
+    </div>
+
+    <div id="menuItemsRatingsChartContainer" class="chart-container" style="display:none;">
+        <canvas id="menuRatingsChart"></canvas>
+    </div>
+
+   
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var chartSelector = document.getElementById('chartSelector');
+
+                chartSelector.addEventListener('change', function () {
+                    // Hide all chart containers
+                    document.getElementById('coffeeSalesChartContainer').style.display = 'none';
+                    document.getElementById('eventAttendanceChartContainer').style.display = 'none';
+                    document.getElementById('menuItemsRatingsChartContainer').style.display = 'none';
+
+                    // Show the selected chart container
+                    var selectedChart = chartSelector.value;
+                    if (selectedChart === 'all') {
+                        // Show all chart containers
+                        document.getElementById('coffeeSalesChartContainer').style.display = 'block';
+                        document.getElementById('eventAttendanceChartContainer').style.display = 'block';
+                        document.getElementById('menuItemsRatingsChartContainer').style.display = 'block';
+                    } else if (selectedChart !== 'all') {
+                        // Show only the selected chart container
+                        document.getElementById(selectedChart + 'Container').style.display = 'block';
+                    }
+                });
+
+                // Place initialization code for any charts here
+            });
+        </script>
+        <script>
+
+
+            document.addEventListener('DOMContentLoaded', function () {
+                var ctx = document.getElementById('eventAttendanceChart').getContext('2d');
+                var eventAttendanceChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [
+                            'Book Club Meeting',
+                            'Poetry Reading',
+                            'Barista Workshop',
+                            'Latte Art Competition',
+                            'Live Jazz night',
+                            'Coffee Tasting',
+                            'New Menu Launch',
+                            'Weekend Brunch'
+                        ],
+                        datasets: [{
+                            label: 'Average Attendance',
+                            data: [45, 60, 77.5, 90, 105, 170, 205, 225],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)', // red
+                                'rgba(54, 162, 235, 0.2)',  // blue
+                                'rgba(255, 206, 86, 0.2)',  // yellow
+                                'rgba(75, 192, 192, 0.2)',  // green
+                                'rgba(153, 102, 255, 0.2)', // purple
+                                'rgba(255, 159, 64, 0.2)',  // orange
+                                'rgba(199, 199, 199, 0.2)', // grey
+                                'rgba(163, 102, 255, 0.2)'  // violet
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)',
+                                'rgba(199, 199, 199, 1)',
+                                'rgba(163, 102, 255, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Event Attendance Overview - April',
+                                font: {
+                                    size: 24
+                                }
+                            },
+                            legend: {
+                                display: false // Set to true if you want the legend to appear
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Average Attendance',
+                                    font: {
+                                        size: 20
+                                    }
+                                },
+                                ticks: {
+                                    precision: 0
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Event Name',
+                                    font: {
+                                        size: 20
+                                    }
+                                }
+                            }
+                        },
+                        responsive: true,
+                        maintainAspectRatio: true // Change to false if you want a fixed size
+                    }
+                });
+            });
+        </script>
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function () {
+                var ctx = document.getElementById('coffeeSalesChart').getContext('2d');
+                var coffeeSalesChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Mocha', 'Café Breve', 'Flat White', 'Americano', 'Cappuccino', 'Latte', 'Espresso'],
+                        datasets: [{
+                            label: 'Average Coffee Sales',
+                            data: [85, 90, 110, 120, 130, 140, 150],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(198, 135, 103, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)',
+                                'rgba(198, 135, 103, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'right'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Brewing Success: Average Coffee Sales per Day',
+                                font: {
+                                    size: 24
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (tooltipItem) {
+                                        return tooltipItem.label + ': ' + tooltipItem.parsed + ' sales';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
+
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const ctx = document.getElementById('menuRatingsChart').getContext('2d');
+                const menuRatingsChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [
+                            'Alfredo Pasta', 'Americano', 'Café Breve', 'Cappuccino',
+                            'Carrot Cake', 'Chicken Lollipop', 'Chicken Sandwich',
+                            'Chicken Tenders', 'Chicken Wings', 'Chocolate Lava Cake',
+                            'Chocolate Shake', 'Classic Chicken Burger', 'Coffee Tasting',
+                            'Espresso', 'Flat White', 'French Fries', 'Garlic Bread Sticks',
+                            'KitKat Shake', 'Latte', 'Lemon Sorbet', 'Mint Chocolate Chip Ice Cream',
+                            'Mocha', 'New York Cheesecake', 'Oreo Shake',
+                            'Pesto Pasta', 'Poetry Reading',
+                            'Red Velvet Cake', 'Rocky Road Ice Cream', 'Spaghetti Bolognese',
+                            'Strawberry Ice Cream', 'Strawberry Shake', 'Stuffed Mushrooms',
+                            'Tiramisu', 'Vanilla Ice Cream', 'Vanilla Shake', 'Vegetable Spring Rolls',
+                            'Veggie Burger', 'Veggie Sandwich'
+                        ],
+                        datasets: [{
+                            label: 'Avg. Rating (out of 5)',
+                            data: [
+                                4.5, 4.6, 4.3, 4.5, 4.6, 4.8, 4.4, 4.5, 4.7, 4.9,
+                                4.8, 4.8, 4.7, 4.8, 4.7, 4.5, 4.7, 5.0, 4.4, 4.6,
+                                4.7, 4.8, 4.2, 4.7, 4.8, 4.9, 4.6, 4.4,
+                                4.7, 4.5, 4.8, 4.6, 4.9, 4.5, 4.7, 4.4, 4.2, 4.3
+                            ],
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                type: 'logarithmic',
+                                min: 4, // minimum value for the scale
+                                max: 5, // maximum value for the scale
+                                ticks: {
+                                    callback: function (value, index, values) {
+                                        return Number.isInteger(value) ? value : null;
+                                    }
+                                }
+                            }
+                        },
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Menu Item Popularity Based on Average Customer Ratings',
+                                font: {
+                                    size: 24
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
+</body>
+</html>

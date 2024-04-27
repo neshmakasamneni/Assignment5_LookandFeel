@@ -1,0 +1,47 @@
+
+.buttom-header-container {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.buttom-header {
+    display: flex;
+    margin: 0 auto;
+    width: 1300px;
+    color: whitesmoke;
+    position: relative;
+}
+
+.logo {
+    flex-basis: 700px;
+    padding: 0px;
+}
+
+.m_text {
+    color: whitesmoke;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: bolder;
+    font-size: large;
+    padding-top: 15%;
+    padding-left: 55%;
+}
+
+.navlist {
+    display: flex;
+    align-items: center;
+    flex-basis: 600px;
+}
+
+    .navlist a {
+        text-decoration: none;
+        padding: 18px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        transition: all 0.5s;
+        color: whitesmoke;
+    }
+
+        .navlist a:hover {
+            color: #f78e21;
+        }

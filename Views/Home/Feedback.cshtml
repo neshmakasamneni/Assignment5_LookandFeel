@@ -1,0 +1,164 @@
+﻿@{
+    Layout = null; // Assuming there is no layout for this page
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Page</title>
+    <link rel="stylesheet" href="@Url.Content("~/css/home.css")">
+    <link rel="stylesheet" href="@Url.Content("~/css/feedback.css")">
+    <script>
+        function addFeedback() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+            var category = document.getElementById("category").value;
+            var item = document.getElementById("item").value;
+            var rating = document.getElementById("rating").value;
+
+            var feedbackContainer = document.getElementById("feedback-container");
+            var card = document.createElement("div");
+            card.className = "feedback-card";
+            card.innerHTML = `
+                                <div class="card-content">
+                                    <strong>Name:</strong> ${name}<br>
+                                    <strong>Email:</strong> ${email}<br>
+                                    <strong>Message:</strong> ${message}<br>
+                                    <strong>Category:</strong> ${category}<br>
+                                    <strong>Item:</strong> ${item}<br>
+                                    <strong>Rating:</strong> ${rating}
+                                </div>
+                            `;
+            feedbackContainer.appendChild(card);
+
+            // Reset form
+            document.getElementById("feedback-form").reset();
+        }
+
+        function updateItems() {
+            var category = document.getElementById("category").value;
+            var itemSelect = document.getElementById("item");
+            itemSelect.innerHTML = "";
+
+            var items = [];
+            if (category === "coffee") {
+                items = [
+                    "Espresso",
+                    "Americano",
+                    "Café Breve",
+                    "Flat White",
+                    "Cappuccino",
+                    "Latte",
+                    "Mocha"
+                ];
+            } else if (category === "food") {
+                items = [
+                    "Alfredo Pasta",
+                    "Spaghetti Bolognese",
+                    "Pesto Pasta",
+                    "French Fries",
+                    "Chicken Sandwich",
+                    "Veggie Sandwich",
+                    "Classic Chicken Burger",
+                    "Veggie Burger",
+                    "Chicken Wings",
+                    "Chicken Tenders",
+                    "Chicken Lollipop",
+                    "Stuffed Mushrooms",
+                    "Vegetable Spring Rolls",
+                    "Garlic Bread Sticks"
+                ];
+            } else if (category === "shakes") {
+                items = [
+                    "Oreo Shake",
+                    "Strawberry Shake",
+                    "Vanilla Shake",
+                    "Chocolate Shake",
+                    "KitKat Shake"
+                ];
+            } else if (category === "cakesIceCreams") {
+                items = [
+                    "Chocolate Lava Cake",
+                    "New York Cheesecake",
+                    "Red Velvet Cake",
+                    "Tiramisu",
+                    "Carrot Cake",
+                    "Vanilla Ice Cream",
+                    "Mint Chocolate Chip Ice Cream",
+                    "Rocky Road Ice Cream",
+                    "Strawberry Ice Cream",
+                    "Lemon Sorbet"
+                ];
+            } else if (category === "specials") {
+                items = [
+                    "Mediterranean Magic",
+                    "Southwest Sensation",
+                    "Asian Fusion Bowl",
+                    "Caesar’s Delight",
+                    "Berry Walnut Mix"
+                ];
+            }
+
+            // Populate item select
+            items.forEach(function (item) {
+                var option = document.createElement("option");
+                option.text = item;
+                itemSelect.add(option);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="buttom-header-container">
+        <div class="buttom-header">
+            <div class="logo">
+                <h1>Verandah Cafe</h1>
+            </div>
+            <div class="navlist">
+                <a href="@Url.Action("Index", "Home")">HOME</a>
+                <a href="@Url.Action("Menu", "Home")">MENU</a>
+                <a href="@Url.Action("Events", "Home")">EVENTS</a>
+                <a href="@Url.Action("Ratings", "Home")">RATINGS</a>
+                <a href="@Url.Action("Feedback", "Home")">FEEDBACK</a>
+                <a href="@Url.Action("Charts", "Home")">CHARTS</a>
+                <a href="@Url.Action("About", "Home")">ABOUT</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Feedback Form</h1>
+        <form id="feedback-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" onchange="updateItems()">
+                <option value=""></option>
+                <option value="coffee">Coffee</option>
+                <option value="food">Food</option>
+                <option value="shakes">Shakes</option>
+                <option value="cakesIceCreams">Cakes/Ice Creams</option>
+                <option value="specials">Specials</option>
+            </select><br>
+
+            <label for="item">Item:</label>
+            <select id="item" name="item">
+                <!-- Items will be populated dynamically based on selected category -->
+            </select><br>
+
+            <label for="rating">Rating:</label>
+            <input type="number" id="rating" name="rating" min="1" max="5" required><br>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea><br>
+
+            <input type="button" value="Submit Feedback" onclick="addFeedback();">
+        </form>
+    </div>
+    <div id="feedback-container" class="feedback-container"></div>
+</body>
+</html>

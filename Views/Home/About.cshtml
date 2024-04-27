@@ -1,0 +1,126 @@
+﻿@{
+    Layout = null; // Or your shared layout if you have one
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ratings & Calories</title>
+    <link rel="stylesheet" href="@Url.Content("~/css/about.css")">
+    <link rel="stylesheet" href="@Url.Content("~/css/home.css")">
+</head>
+<body>
+    <div class="buttom-header-container">
+        <div class="buttom-header">
+            <div class="logo">
+                <h1>Verandah Cafe</h1>
+            </div>
+            <div class="navlist">
+                <a href="@Url.Action("Index", "Home")">HOME</a>
+                <a href="@Url.Action("Menu", "Home")">MENU</a>
+                <a href="@Url.Action("Events", "Home")">EVENTS</a>
+                <a href="@Url.Action("Ratings", "Home")">RATINGS</a>
+                <a href="@Url.Action("Feedback", "Home")">FEEDBACK</a>
+                <a href="@Url.Action("Charts", "Home")">CHARTS</a>
+                <a href="@Url.Action("About", "Home")">ABOUT</a>
+            </div>
+        </div>
+    </div>
+
+    <h3> Github Link to the Project: </h3>
+    <a href="https://github.com/neshmakasamneni/Assignment_LookAndFeel">Assignment03-WebLookandFeel</a>
+
+    <div class="about-container">
+        <div class="profile">
+            <img class="profile-image" src="@Url.Content("~/images/ranjith.png")" alt="Profile image">
+            <div class="profile-description">
+                <h2>Ranjith Babu Vennam</h2>
+                <p>
+                    Graduate student pursuing Business Analytics and Information Systems at the University of South
+                    Florida. Worked as a Data consultant for 2 years. In this Project, I Worked on designing and styling the "Home" and "Menu" pages.
+                </p>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img class="profile-image" src="@Url.Content("~/images/neshma.jpeg")" alt="Profile image">
+            <div class="profile-description">
+                <h2>Neshma Kasamneni</h2>
+                <p>
+                    Currently Pursuing masters in Business Analytics & Information Systems at the University of South Florida .
+                    Worked as a systems engineer for overs 2 years in India. In this Project, I worked on creating "Events" and "Item Ratings".
+                </p>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img class="profile-image" src="@Url.Content("~/images/Tharun.jpeg")" alt="Profile image">
+            <div class="profile-description">
+                <h2>Tharun Kesavadas</h2>
+                <p>Pursuing masters in Business Analytics & Information Systems at the University of South Florida. Worked as a Data Engineer for 2 years and worked on "About" page and navigations.</p>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img class="profile-image" src="@Url.Content("~/images/pavan_updated.jpeg")" alt="Profile image">
+
+            <div class="profile-description">
+                <h2>Mohan Venkata Pavan</h2>
+                <p> Masters Student in the field of Business Analytics & Information Systems at USF. Worked on integrating the pages and looking over stylesheets.</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <style>
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+            .image-container .image {
+                width: 48%; /* Sets image width to be less than half the container width */
+                margin: 1%; /* Provides spacing between images */
+                box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            }
+
+            .image-container h2 {
+                width: 100%; /* Allows the title to take the full width */
+                text-align: center; /* Center aligns the title */
+                margin: 0 0 20px; /* Adds space below the title */
+            }
+
+        .media (max-width: 768px) {
+            .image-container .image
+
+        {
+            width: 100%; /* Full width for smaller devices */
+            margin-bottom: 20px; /* Spacing between images on smaller screens */
+        }
+
+        }
+    </style>
+    <div class="buttom-header-container">
+        <!-- ... your header and nav content ... -->
+    </div>
+
+    <div class="about-container">
+        <!-- ... your about profiles content ... -->
+    </div>
+
+    <div class="image-container">
+        <h2>Data Model</h2>
+        <img src="@Url.Content("~/images/ERD diagram.png")" class="image" alt="ERD Diagram" />
+        <img src="@Url.Content("~/images/visualization by ratings.png")" class="image" alt="Visualization By Ratings" />
+        <img src="@Url.Content("~/images/Coffeeanalysis.png")" class="image" alt="Average Coffee Sales per Day" />
+        <img src="@Url.Content("~/images/events.png")" class="image" alt="Average Event Attendance Overview in the Month of April" />
+        <img src="@Url.Content("~/images/git_1.jpeg")" class="image" alt="commits" />
+        <img src="@Url.Content("~/images/git_2.jpeg")" class="image" alt="commits" />
+        <img src="@Url.Content("~/images/git_3.jpeg")" class="image" alt="commits" />
+    </div>
+</body>
+</html>

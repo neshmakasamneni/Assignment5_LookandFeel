@@ -1,0 +1,40 @@
+﻿body {
+    background-color: rgb(241, 234, 220);
+    margin: 0;
+    padding: 0;
+}
+
+.pie-chart-container {
+    display: block; /* Show all charts by default */
+    max-width: 600px; /* Set a max-width for all charts if needed */
+    margin: auto;
+}
+
+.pie-chart-container {
+    max-width: 800px; /* Set a smaller max-width for the pie chart specifically */
+}
+
+.chart-controls {
+    text-align: center; /* Center align the controls */
+    margin: 20px 0; /* Add some vertical spacing */
+}
+
+    .chart-controls label {
+        margin-right: 10px; /* Space out label from the select box */
+        font-size: 18px; /* Larger font size for better readability */
+        color: #333; /* Dark grey color for better contrast */
+    }
+
+    .chart-controls select {
+        padding: 10px 15px; /* Add padding inside the select box */
+        font-size: 16px; /* Slightly smaller font size than the label */
+        border: 2px solid #ccc; /* A light grey border */
+        border-radius: 5px; /* Rounded corners for a modern look */
+        cursor: pointer; /* Change the cursor to indicate it's clickable */
+        outline: none; /* Remove the default focus outline */
+    }
+
+        .chart-controls select:hover,
+        .chart-controls select:focus {
+            border-color: #56bb8a; /* Highlight color when hovered or focused */
+        }

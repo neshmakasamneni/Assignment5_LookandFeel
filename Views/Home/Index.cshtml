@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verandah Cafe</title>
+    <link rel="stylesheet" href="@Url.Content("~/css/home.css")">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="buttom-header-container">
+        <div class="buttom-header">
+            <div class="logo">
+                <img class="logo-image" src="@Url.Content("~/images/OIP.jpg")" alt="Verandah Cafe" width="50px" height="50px">
+                <h1>Verandah Cafe</h1>
+            </div>
+            <div class="navlist">
+                <a href="@Url.Action("Index", "Home")">HOME</a>
+                <a href="@Url.Action("Menu", "Home")">MENU</a>
+                <a href="@Url.Action("Events", "Home")">EVENTS</a>
+                <a href="@Url.Action("Ratings", "Home")">RATINGS</a>
+                <a href="@Url.Action("Feedback", "Home")">FEEDBACK</a>
+                <a href="@Url.Action("Charts", "Home")">CHARTS</a>
+                <a href="@Url.Action("About", "Home")">ABOUT</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Welcome to Verandah Cafe: Where Every Sip is a Story</h1>
+        <p>At Verandah Cafe, we don't just serve coffee; we craft experiences. Our Cafe is more than just a place to grab a drink – it's a sanctuary for community, creativity, and connection.</p>
+        <h2>Our Story:</h2>
+        <p>Verandah Cafe was born from a passion for bringing people together over exceptional coffee and delicious bites. We've been serving up more than just caffeine – we're serving moments of joy, inspiration, and friendship.</p>
+        <h2>Our Atmosphere:</h2>
+        <p>Step into Verandah Cafe, and you're greeted by the comforting aroma of freshly brewed coffee and the warm chatter of friends catching up. Our cozy yet vibrant space invites you to linger, whether you're seeking a quiet corner to dive into a book or a lively table for spirited conversation.</p>
+        <h2>Our Menu:</h2>
+        <p>From our carefully curated selection of specialty coffees to our mouthwatering pastries and light bites, every item on our menu is crafted with care and quality in mind. Whether you're craving a classic cappuccino, a decadent slice of cake, or a wholesome salad, there's something to delight every palate.</p>
+        <h2>Our Community:</h2>
+        <p>Verandah Cafe isn't just a place to grab a drink, it's a hub for our vibrant community. From hosting local art exhibitions to supporting grassroots initiatives, we're committed to nurturing creativity, fostering connections, and giving back to the neighborhoods we call home.</p>
+        <h2>Our Promise:</h2>
+        <p>When you visit Verandah Cafe, you're not just a customer; you're part of our family. We strive to make every visit memorable, every cup exceptional, and every interaction meaningful. Because here at Verandah Cafe, every sip is a story waiting to be told.</p>
+        <p>Join us at Verandah Cafe, where coffee isn't just a beverage – it's an experience.</p>
+        <div class="testimonials">
+            <h3>What Our Customers Say</h3>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p>"The coffee here is always amazing! A perfect start to any morning."</p>
+                    <cite>- Jane Doe, Coffee Lover</cite>
+                </div>
+                <div class="testimonial">
+                    <p>"Lovely ambiance and great service. Definitely my favorite spot to relax!"</p>
+                    <cite>- John Smith, Frequent Visitor</cite>
+                </div>
+                <div class="testimonial">
+                    <p>"The espresso martinis are a must-try! Best way to kick off the weekend."</p>
+                    <cite>- Emily Rivera, Espresso Enthusiast</cite>
+                </div>
+                <div class="testimonial">
+                    <p>"I love the artsy vibe and the quiet corners perfect for reading or working on my laptop."</p>
+                    <cite>- Lucas Chen, Local Novelist</cite>
+                </div>
+                <div class="testimonial">
+                    <p>"Fantastic place! The staff are always friendly and the seasonal specials are divine."</p>
+                    <cite>- Mia Thomson, Seasonal Customer</cite>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="@Url.Content("~/js/home.js")"></script>
+</body>
+</html>
